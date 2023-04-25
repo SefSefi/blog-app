@@ -1,0 +1,22 @@
+.all-posts{
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    padding: 1px 5px;
+    min-height: 140px;
+}
+
+
+
+
+.toBold{
+    font-weight: bold;
+}
+.toRed{
+    color: #DC143C;
+}
+
+h3{
+    margin: 0 0 5px 0;
+}
+

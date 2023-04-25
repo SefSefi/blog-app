@@ -1,0 +1,20 @@
+.side-text{
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+  }
+  .uper-side-text{
+    border-bottom: 2px solid black;
+    padding-bottom: 20px; 
+    margin: 0;
+  }
+  .header-side-text{
+    margin: 0;
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+  .botom-side-text{
+    margin: 0;
+  }
