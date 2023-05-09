@@ -14,12 +14,9 @@ function Nav() {
         <div className="nav-padding nav-left-border">
           <NavLink to="/newPost">New Post Page</NavLink>
         </div>
-        <div className="nav-padding nav-left-border">
-          <NavLink to="/Post">Post Page</NavLink>
-        </div>
       </div>
       <div className="login-button">
-        <a href="url">Login</a>
+        <NavLink to="/LogIn">Login</NavLink>
       </div>
     </nav>
   );
