@@ -8,9 +8,11 @@
 .PostPage-content {
   position: relative;
   padding-top: 60px;
+  padding-left: 30px;
+  padding-right: 10px;
   border: 1px solid black;
   width: 45%;
-  text-align: center;
+  text-align: left;
   font-size: 1.5rem;
 }
 
@@ -22,4 +24,5 @@
 
 .PostPage-h3 {
   margin-bottom: 40px;
+  text-align: center;
 }

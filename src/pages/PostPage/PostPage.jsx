@@ -17,7 +17,7 @@ export default function PostPage() {
       <div className="PostPage-frame">
         <div className="PostPage-content">
           <div className="">
-            <h3>{post.title}</h3>
+            <h3 className ="PostPage-h3">{post.title}</h3>
             <p className="" dangerouslySetInnerHTML={post.content} />
             <p className="">
               Published {post.time} ago by {post.name}
