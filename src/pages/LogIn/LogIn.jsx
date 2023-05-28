@@ -16,7 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function LogIn() {
   return (
-    <Box sx={{ width: "100%", border: "1px solid red", margin: "0px" }}>
+    <Box sx={{ width: "100%", margin: "0px" }}>
       <Grid
         margin="0px"
         container
@@ -42,7 +42,6 @@ export default function LogIn() {
             sx={{
               width: { md: 300 },
               height: { md: 60 },
-              border: 1,
               borderRadius: "5px",
             }}
             id="outlined-basic"
@@ -55,7 +54,6 @@ export default function LogIn() {
             sx={{
               width: { md: 300 },
               height: { md: 60 },
-              border: 1,
               borderRadius: "5px",
             }}
             id="outlined-password-input"

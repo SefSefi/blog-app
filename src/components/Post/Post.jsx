@@ -1,8 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import "./Post.css";
 
 function Post({ data }) {
+  const navigate = useNavigate();
+
+  const linkToPost = () => {
+    navigate("/post/" + data.id);
+  };
+
   return (
-    <div className="post">
+    <div className="post" on onClick={linkToPost}>
       <div className="text-part">
         <h3>{data.title}</h3>
         <p className="post-content" dangerouslySetInnerHTML={data.content} />
