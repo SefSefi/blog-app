@@ -9,12 +9,12 @@ function Post({ data }) {
   };
 
   return (
-    <div className="post" on onClick={linkToPost}>
+    <div className="post" onClick={linkToPost}>
       <div className="text-part">
         <h3>{data.title}</h3>
-        <p className="post-content" dangerouslySetInnerHTML={data.content} />
+        <p className="post-content">{data.body}</p>
         <p className="post-publish-time">
-          Published {data.time} ago by {data.name}
+          Published at {data.created_at}, by {data.username}
         </p>
       </div>
       <div className="picture-part">
