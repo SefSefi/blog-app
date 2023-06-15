@@ -1,7 +1,7 @@
 import "./Nav.css";
 import { NavLink } from "react-router-dom";
 
-function Nav() {
+function Nav({ setIsLoggedIn, isLoggedIn }) {
   return (
     <nav>
       <div className="nav-buttons">
@@ -16,7 +16,13 @@ function Nav() {
         </div>
       </div>
       <div className="login-button">
-        <NavLink to="/LogIn">Login</NavLink>
+        {isLoggedIn ? (
+          <NavLink to="/home" onClick={() => setIsLoggedIn(false)}>
+            Logout
+          </NavLink>
+        ) : (
+          <NavLink to="/LogIn">Login</NavLink>
+        )}
       </div>
     </nav>
   );

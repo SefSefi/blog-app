@@ -7,17 +7,16 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function LogIn({ setIsLoggedIn }) {
+export default function SignUp() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const nav = useNavigate();
 
-  const handleLogin = () => {
+  const handleSignup = () => {
     axios
-      .post("http://127.0.0.1:5000/login", { username, password })
+      .post("http://127.0.0.1:5000/signup", { username, password })
       .then(() => {
-        setIsLoggedIn(true);
-        nav("/home");
+        nav("/login");
       })
       .catch((error) => {
         console.error(error);
@@ -44,7 +43,7 @@ export default function LogIn({ setIsLoggedIn }) {
             fontSize: "1.5rem",
           }}
         >
-          <h1>Login</h1>
+          <h1>Signup</h1>
         </Grid>
         <Grid item>
           <TextField
@@ -77,7 +76,7 @@ export default function LogIn({ setIsLoggedIn }) {
         </Grid>
         <Grid item>
           <Button
-            onClick={handleLogin}
+            onClick={handleSignup}
             variant="contained"
             sx={{
               width: { md: 300 },
@@ -87,7 +86,7 @@ export default function LogIn({ setIsLoggedIn }) {
               border: 1,
             }}
           >
-            Login
+            Sign Up
           </Button>
         </Grid>
         <Grid
@@ -96,7 +95,7 @@ export default function LogIn({ setIsLoggedIn }) {
             fontSize: "1.4rem",
           }}
         >
-          <a href="/SignUp">Not registered yet</a>
+          <a href="/LogIn">Already registered</a>
         </Grid>
       </Grid>
     </Box>
