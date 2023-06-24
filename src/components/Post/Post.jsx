@@ -5,7 +5,7 @@ function Post({ data }) {
   const navigate = useNavigate();
 
   const linkToPost = () => {
-    navigate("/post/" + data.id);
+    navigate("/posts/" + data.id);
   };
 
   return (

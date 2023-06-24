@@ -14,8 +14,16 @@ export default function LogIn({ setIsLoggedIn }) {
 
   const handleLogin = () => {
     axios
-      .post("http://127.0.0.1:5000/login", { username, password })
-      .then(() => {
+      .post(
+        "http://127.0.0.1:5000/login",
+        { username, password },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log("res", res);
+        console.log("cookies: ", document.cookie);
         setIsLoggedIn(true);
         nav("/home");
       })

@@ -1,7 +1,25 @@
 import "./Nav.css";
 import { NavLink } from "react-router-dom";
+import * as React from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Nav({ setIsLoggedIn, isLoggedIn }) {
+  const nav = useNavigate();
+  const handleLogout = () => {
+    axios
+      .post("http://127.0.0.1:5000/logout", null, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setIsLoggedIn(false);
+        nav("/home");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <nav>
       <div className="nav-buttons">
@@ -17,9 +35,7 @@ function Nav({ setIsLoggedIn, isLoggedIn }) {
       </div>
       <div className="login-button">
         {isLoggedIn ? (
-          <NavLink to="/home" onClick={() => setIsLoggedIn(false)}>
-            Logout
-          </NavLink>
+          <NavLink onClick={handleLogout}>Logout</NavLink>
         ) : (
           <NavLink to="/LogIn">Login</NavLink>
         )}

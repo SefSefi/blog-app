@@ -4,9 +4,9 @@ import Home from "./pages/Home/Home";
 import NewPost from "./pages/NewPost/NewPost";
 import Post from "./pages/PostPage/PostPage";
 import LogIn from "./pages/LogIn/LogIn";
+import SignUp from "./pages/SignUp/SignUp";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
-import SignUp from "./pages/SignUp/Signup";
 import { useState } from "react";
 
 function App() {
