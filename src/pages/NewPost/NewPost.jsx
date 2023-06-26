@@ -10,9 +10,17 @@ export default function NewPost() {
   const nav = useNavigate();
 
   const handleNewPost = () => {
+    // console.log(`title ${title}`);
+    // console.log(`Body ${body}`);
+    //console.log(`user_id ${user_id}`);
     axios
-      .post("http://127.0.0.1:5000/posts", { title, Body, user_id })
-      .then(() => {
+      .post(
+        "http://127.0.0.1:5000/posts",
+        { title, body },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        // console.log("Response from the backend:", res.data);
         nav("/Home");
       })
       .catch((error) => {
@@ -21,7 +29,7 @@ export default function NewPost() {
   };
 
   return (
-    <form className="new-post-form">
+    <form className="new-post-form" onSubmit={handleNewPost}>
       <h1>New Post</h1>
       <label>
         <input
@@ -44,7 +52,7 @@ export default function NewPost() {
           cols="50"
         ></textarea>
       </label>
-      <button type="button">Submit</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }

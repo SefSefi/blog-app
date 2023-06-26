@@ -20,8 +20,12 @@ function App() {
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/newPost" element={<NewPost />} />
-            <Route path="/post/:id" element={<Post />} />
+            <Route
+              path="/newPost"
+              element={isLoggedIn ? <NewPost /> : <Navigate to="/home" />}
+            />
+            <Route path="/post" element={<Post />} />
+            {/* <Route path="/post/:id" element={<Post />} /> */}
             <Route path="/LogIn" element={<LogIn {...{ setIsLoggedIn }} />} />
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/*" element={<Navigate to="/home" />} />

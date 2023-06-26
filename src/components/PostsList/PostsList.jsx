@@ -10,7 +10,7 @@ function PostsList() {
     axios
       .get("http://127.0.0.1:5000/posts")
       .then((response) => {
-        console.log(response);
+        console.log("ALL POSTS: ", response);
         setPosts(response.data);
       })
       .catch((error) => {

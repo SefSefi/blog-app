@@ -52,7 +52,7 @@ export default function LogIn({ setIsLoggedIn }) {
             fontSize: "1.5rem",
           }}
         >
-          <h1>Login</h1>
+          <h1>Log in</h1>
         </Grid>
         <Grid item>
           <TextField

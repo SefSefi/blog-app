@@ -29,13 +29,15 @@ function Nav({ setIsLoggedIn, isLoggedIn }) {
         <div className="nav-padding nav-left-border">
           <NavLink to="/About">About Me Page</NavLink>
         </div>
-        <div className="nav-padding nav-left-border">
-          <NavLink to="/newPost">New Post Page</NavLink>
-        </div>
+        {isLoggedIn && (
+          <div className="nav-padding nav-left-border">
+            <NavLink to="/newPost">New Post Page</NavLink>
+          </div>
+        )}
       </div>
       <div className="login-button">
         {isLoggedIn ? (
-          <NavLink onClick={handleLogout}>Logout</NavLink>
+          <NavLink onClick={handleLogout}>Log out</NavLink>
         ) : (
           <NavLink to="/LogIn">Login</NavLink>
         )}
