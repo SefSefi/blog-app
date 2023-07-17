@@ -6,24 +6,27 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
+import jwt_decode from "jwt-decode";
 
 export default function LogIn({ setIsLoggedIn }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const nav = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    const isGoogleLogin = !!e.credential;
+    const googleName = isGoogleLogin && jwt_decode(e.credential).given_name;
+    console.log(googleName);
     axios
       .post(
         "http://127.0.0.1:5000/login",
-        { username, password },
+        { username: googleName || username, password, isGoogleLogin },
         {
           withCredentials: true,
         }
       )
       .then((res) => {
-        console.log("res", res);
-        console.log("cookies: ", document.cookie);
         setIsLoggedIn(true);
         nav("/home");
       })
@@ -93,11 +96,13 @@ export default function LogIn({ setIsLoggedIn }) {
               color: "black",
               bgcolor: "#e0e0e0",
               border: 1,
+              marginBottom: 5,
             }}
           >
             Login
           </Button>
         </Grid>
+        <GoogleLogin onSuccess={handleLogin} />
         <Grid
           item
           sx={{

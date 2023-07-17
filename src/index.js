@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
 import CssBaseline from "@mui/material/CssBaseline";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,7 +15,9 @@ root.render(
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <App />
+        <GoogleOAuthProvider clientId="64550745479-6ab29k5pqqebkhj9q6pc34urns7tnfss.apps.googleusercontent.com">
+          <App />
+        </GoogleOAuthProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>

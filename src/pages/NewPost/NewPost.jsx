@@ -4,19 +4,19 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function NewPost() {
+export default function NewPost({ categories }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+
+  const [selectedCategory, setSelectedCategory] = useState(categories[0].id);
+
   const nav = useNavigate();
 
   const handleNewPost = () => {
-    // console.log(`title ${title}`);
-    // console.log(`Body ${body}`);
-    //console.log(`user_id ${user_id}`);
     axios
       .post(
         "http://127.0.0.1:5000/posts",
-        { title, body },
+        { title, body, category: selectedCategory },
         { withCredentials: true }
       )
       .then((res) => {
@@ -51,6 +51,19 @@ export default function NewPost() {
           rows="10"
           cols="50"
         ></textarea>
+      </label>
+      <label>
+        Choose category:
+        <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
       </label>
       <button type="submit">Submit</button>
     </form>
