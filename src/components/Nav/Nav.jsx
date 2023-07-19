@@ -34,6 +34,11 @@ function Nav({ setIsLoggedIn, isLoggedIn }) {
             <NavLink to="/newPost">New Post Page</NavLink>
           </div>
         )}
+        {isLoggedIn && (
+          <div className="nav-padding nav-left-border">
+            <NavLink to="/EditingMyPost">Editing My Post</NavLink>
+          </div>
+        )}
       </div>
       <div className="login-button">
         {isLoggedIn ? (

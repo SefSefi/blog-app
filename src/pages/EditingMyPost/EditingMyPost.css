@@ -1,0 +1,18 @@
+.new-post-form {
+  display: flex;
+  align-content: center;
+  row-gap: 30px;
+  flex-direction: column;
+  border-radius: 5px;
+  align-items: center;
+  width: 100%;
+  margin: 0px;
+  padding-top: 100px;
+}
+
+.new-post-form h1,
+.new-post-form input,
+.new-post-form textarea,
+.new-post-form button {
+  width: 300px;
+}

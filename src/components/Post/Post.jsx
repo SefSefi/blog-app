@@ -1,11 +1,25 @@
 import { useNavigate } from "react-router-dom";
 import "./Post.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function Post({ data }) {
   const navigate = useNavigate();
+  const nav = useNavigate();
+
+  const handleEdit = (e) => {
+    e.stopPropagation();
+    console.log("edit!: ", data);
+    nav(`/EditingMyPost/${data.id}`);
+  };
+
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    console.log("delete!");
+  };
 
   const linkToPost = () => {
-    navigate("/posts/" + data.id);
+    navigate("/PostPage/" + data.id);
   };
 
   return (
@@ -16,6 +30,14 @@ function Post({ data }) {
         <p className="post-publish-time">
           Published at {data.created_at}, by {data.username}
         </p>
+        <div className="post-btn-container">
+          <button className="bottun-editing" onClick={handleEdit}>
+            <FontAwesomeIcon icon={faPenToSquare} />
+          </button>
+          <button className="bottun-delete-post" onClick={handleDelete}>
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
+        </div>
       </div>
       <div className="picture-part">
         <div className="the-picture">

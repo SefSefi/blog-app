@@ -3,24 +3,15 @@ import "./PostsList.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function PostsList({ categories }) {
-  const [posts, setPosts] = useState([]);
+function PostsList({ categories, posts }) {
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [freeSearch, setFreeSearch] = useState("");
-
+  console.log("cats: ", categories);
+  console.log("posts: ", posts);
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:5000/posts")
-      .then((response) => {
-        console.log("ALL POSTS: ", response);
-        setPosts(response.data);
-        setFilteredPosts(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+    setFilteredPosts([...posts]);
+  }, [posts]);
 
   return (
     <div className="all-posts">
@@ -36,7 +27,7 @@ function PostsList({ categories }) {
           type="button"
           onClick={() =>
             setFilteredPosts(
-              posts.filter((post) => post.body.includes(freeSearch))
+              posts.filter((post) => post?.body?.includes(freeSearch))
             )
           }
         >

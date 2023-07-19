@@ -1,57 +1,82 @@
-.post{
-    display: flex;
-    flex-direction: row;
-    border-style: solid;
-    padding: 1px 5px;
-    min-height: 160px;
-    margin: 7px 2px;
+.post {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  padding: 1px 5px;
+  min-height: 160px;
+  margin: 7px 2px;
 }
 
-.text-part{
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0px;
-    margin-top: 0px;
+.post-btn-container {
+  display: flex;
+  gap: 10px;
 }
 
-.post-content{
-    flex-grow: 2;
-    margin: 0px 0;
-  }
-
-  .post-publish-time{
-    margin: 0 0 5px 0;
+.bottun-delete-post,
+.bottun-editing {
+  all: unset;
+  padding: 0px 15px;
+  height: 50px;
 }
 
-.picture-part{
-    display: flex;
-    position: relative;
-    margin: 5px;
-    padding: 5px;
-    width:30%;
-    justify-content: flex-end;
+.bottun-delete-post:hover,
+.bottun-editing:hover {
+  cursor: pointer;
 }
 
-.the-picture{
-    display: flex;
-    position: absolute;
-    border: 2px solid black;
-    width: 70px;
-    height: 70px;
+.bottun-delete-post {
+  color: red;
 }
 
-.the-1-x{
-    position: absolute;
-    top: -18%;
-    left: 50%;
-    height: 135%;
-    border: 1px solid black;
-    box-sizing: border-box;
-    transform: rotate(45deg);
+.bottun-editing {
+  color: green;
 }
 
-.the-2-x{
+.text-part {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+.post-content {
+  flex-grow: 2;
+  margin: 0px 0;
+}
+
+.post-publish-time {
+  margin: 0 0 5px 0;
+}
+
+.picture-part {
+  display: flex;
+  position: relative;
+  margin: 5px;
+  padding: 5px;
+  width: 30%;
+  justify-content: flex-end;
+}
+
+.the-picture {
+  display: flex;
+  position: absolute;
+  border: 2px solid black;
+  width: 70px;
+  height: 70px;
+}
+
+.the-1-x {
+  position: absolute;
+  top: -18%;
+  left: 50%;
+  height: 135%;
+  border: 1px solid black;
+  box-sizing: border-box;
+  transform: rotate(45deg);
+}
+
+.the-2-x {
   position: absolute;
   top: -18%;
   left: 50%;
@@ -59,4 +84,4 @@
   border: 1px solid black;
   box-sizing: border-box;
   transform: rotate(135deg);
-  }
+}

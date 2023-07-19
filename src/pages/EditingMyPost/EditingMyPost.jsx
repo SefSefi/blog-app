@@ -1,33 +1,43 @@
-import React from "react";
-import "./NewPost.css";
+import React, { useEffect } from "react";
+import "./EditingMyPost.css";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function NewPost({ categories }) {
+export default function EditingMyPost({ categories, posts }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(categories[0].id);
   const nav = useNavigate();
-  const handleNewPost = () => {
-    axios
-      .post(
-        "http://127.0.0.1:5000/posts",
-        { title, body, category: selectedCategory },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        // console.log("Response from the backend:", res.data);
-        nav("/Home");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+  const { id } = useParams();
 
+  useEffect(() => {
+    const { title, body, categry_id } = posts.find((post) => post.id === +id);
+
+    setTitle(title);
+    setBody(body);
+    setSelectedCategory(categry_id || "");
+  }, []);
+
+  const EditingMyPost = () => {
+    console.log("post id: ", id);
+    // axios
+    //   .post(
+    //     "http://127.0.0.1:5000/posts",
+    //     { title, body, category: selectedCategory },
+    //     { withCredentials: true }
+    //   )
+    //   .then((res) => {
+    //     // console.log("Response from the backend:", res.data);
+    //     nav("/Home");
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+  };
   return (
-    <form className="new-post-form" onSubmit={handleNewPost}>
-      <h1>New Post</h1>
+    <form className="new-post-form" onSubmit={EditingMyPost}>
+      <h1>Editing your post</h1>
       <label>
         <input
           value={title}
@@ -55,6 +65,7 @@ export default function NewPost({ categories }) {
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
         >
+          <option value={""}>Select...</option>
           {categories.map((category) => (
             <option key={category.id} value={category.id}>
               {category.name}

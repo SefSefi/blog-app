@@ -5,6 +5,7 @@ import NewPost from "./pages/NewPost/NewPost";
 import Post from "./pages/PostPage/PostPage";
 import LogIn from "./pages/LogIn/LogIn";
 import SignUp from "./pages/Signup/Signup";
+import EditingMyPost from "./pages/EditingMyPost/EditingMyPost";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -13,16 +14,18 @@ import axios from "axios";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:5000/category")
-      .then((res) => {
-        setCategories(res.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    (async () => {
+      const postsFromServer = await axios.get("http://127.0.0.1:5000/posts");
+      setPosts(postsFromServer.data);
+
+      const categoriesFromServer = await axios.get(
+        "http://127.0.0.1:5000/category"
+      );
+      setCategories(categoriesFromServer.data);
+    })();
   }, []);
 
   return (
@@ -31,13 +34,23 @@ function App() {
         <Nav {...{ setIsLoggedIn }} {...{ isLoggedIn }} />
         <div className="all">
           <Routes>
-            <Route path="/home" element={<Home {...{ categories }} />} />
+            <Route path="/home" element={<Home {...{ categories, posts }} />} />
             <Route path="/about" element={<About />} />
             <Route
               path="/newPost"
               element={
                 isLoggedIn ? (
                   <NewPost {...{ categories }} />
+                ) : (
+                  <Navigate to="/home" />
+                )
+              }
+            />
+            <Route
+              path="/EditingMyPost/:id"
+              element={
+                isLoggedIn ? (
+                  <EditingMyPost {...{ categories, posts }} />
                 ) : (
                   <Navigate to="/home" />
                 )
