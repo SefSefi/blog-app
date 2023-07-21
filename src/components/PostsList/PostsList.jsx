@@ -7,8 +7,8 @@ function PostsList({ categories, posts }) {
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [freeSearch, setFreeSearch] = useState("");
-  console.log("cats: ", categories);
-  console.log("posts: ", posts);
+  // console.log("cats: ", categories);
+  // console.log("posts: ", posts);
   useEffect(() => {
     setFilteredPosts([...posts]);
   }, [posts]);

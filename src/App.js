@@ -47,7 +47,7 @@ function App() {
               }
             />
             <Route
-              path="/EditingMyPost/:id"
+              path="/EditingMyPost/:post_id"
               element={
                 isLoggedIn ? (
                   <EditingMyPost {...{ categories, posts }} />

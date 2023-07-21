@@ -9,34 +9,37 @@ export default function EditingMyPost({ categories, posts }) {
   const [body, setBody] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(categories[0].id);
   const nav = useNavigate();
-  const { id } = useParams();
+  const { post_id } = useParams();
 
   useEffect(() => {
-    const { title, body, categry_id } = posts.find((post) => post.id === +id);
+    const { title, body, categry_id } = posts.find(
+      (post) => post.id === +post_id
+    );
 
     setTitle(title);
     setBody(body);
     setSelectedCategory(categry_id || "");
   }, []);
 
-  const EditingMyPost = () => {
-    console.log("post id: ", id);
-    // axios
-    //   .post(
-    //     "http://127.0.0.1:5000/posts",
-    //     { title, body, category: selectedCategory },
-    //     { withCredentials: true }
-    //   )
-    //   .then((res) => {
-    //     // console.log("Response from the backend:", res.data);
-    //     nav("/Home");
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
+  const hendelEditingMyPost = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        "http://127.0.0.1:5000/updatedPost",
+        { title, body, category: selectedCategory, post_id },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        console.log("Response from the backend:", res.data);
+        nav("/Home");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
+
   return (
-    <form className="new-post-form" onSubmit={EditingMyPost}>
+    <form className="new-post-form" onSubmit={hendelEditingMyPost}>
       <h1>Editing your post</h1>
       <label>
         <input

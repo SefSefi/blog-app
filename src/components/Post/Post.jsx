@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import "./Post.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Axios } from "axios";
+import axios from "axios";
 
 function Post({ data }) {
   const navigate = useNavigate();
@@ -13,9 +15,22 @@ function Post({ data }) {
     nav(`/EditingMyPost/${data.id}`);
   };
 
-  const handleDelete = (e) => {
-    e.stopPropagation();
-    console.log("delete!");
+  const handleDelete = () => {
+    console.log("delete post!");
+    axios
+      .delete(`http://127.0.0.1:5000/deletePost`, {
+        withCredentials: true,
+        data: {
+          post_id: data.id,
+        },
+      })
+      .then((res) => {
+        console.log("Response from the backend:", res.data);
+        // nav("/Home");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const linkToPost = () => {
