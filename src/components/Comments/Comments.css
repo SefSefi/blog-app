@@ -1,0 +1,40 @@
+.comments-container {
+  margin: 10px;
+  width: 45%;
+}
+
+.comments-list {
+  all: unset;
+}
+
+.comment {
+  border-bottom: 1px solid gray;
+  list-style: none;
+}
+
+.comment > * {
+  margin: 0;
+}
+
+.new-comment-container {
+  display: flex;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.new-comment-container > textarea {
+  width: 90%;
+  height: 60px;
+  resize: none;
+}
+
+.bottun-comment {
+  all: unset;
+  padding: 0px 15px;
+  font-size: 30px;
+  color: green;
+}
+
+.bottun-comment:hover {
+  cursor: pointer;
+}

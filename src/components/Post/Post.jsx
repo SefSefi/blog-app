@@ -1,7 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import "./Post.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPenToSquare,
+  faTrash,
+  faCommentDots,
+} from "@fortawesome/free-solid-svg-icons";
 import { Axios } from "axios";
 import axios from "axios";
 
@@ -31,6 +35,9 @@ function Post({ data }) {
       .catch((error) => {
         console.error(error);
       });
+  };
+  const handlecommet = () => {
+    console.log("comment on post!");
   };
 
   const linkToPost = () => {

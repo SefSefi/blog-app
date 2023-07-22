@@ -2,7 +2,7 @@ import Nav from "./components/Nav/Nav";
 import About from "./pages/About/About";
 import Home from "./pages/Home/Home";
 import NewPost from "./pages/NewPost/NewPost";
-import Post from "./pages/PostPage/PostPage";
+import PostPage from "./pages/PostPage/PostPage";
 import LogIn from "./pages/LogIn/LogIn";
 import SignUp from "./pages/Signup/Signup";
 import EditingMyPost from "./pages/EditingMyPost/EditingMyPost";
@@ -56,7 +56,7 @@ function App() {
                 )
               }
             />
-            <Route path="/post" element={<Post />} />
+            <Route path="/PostPage/:id" element={<PostPage {...{ posts }} />} />
             <Route path="/LogIn" element={<LogIn {...{ setIsLoggedIn }} />} />
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/*" element={<Navigate to="/home" />} />

@@ -25,10 +25,14 @@
 }
 
 .bottun-delete-post {
-  color: red;
+  color: black;
 }
 
 .bottun-editing {
+  color: blue;
+}
+
+.bottun-comment {
   color: green;
 }
 
