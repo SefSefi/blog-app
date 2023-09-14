@@ -22,7 +22,7 @@ function Post({ data }) {
   const handleDelete = () => {
     console.log("delete post!");
     axios
-      .delete(`http://127.0.0.1:5000/deletePost`, {
+      .delete(`deletePost`, {
         withCredentials: true,
         data: {
           post_id: data.id,
@@ -49,16 +49,18 @@ function Post({ data }) {
       <div className="text-part">
         <h3>{data.title}</h3>
         <p className="post-content">{data.body}</p>
-        <p className="post-publish-time">
-          Published at {data.created_at}, by {data.username}
-        </p>
-        <div className="post-btn-container">
-          <button className="bottun-editing" onClick={handleEdit}>
-            <FontAwesomeIcon icon={faPenToSquare} />
-          </button>
-          <button className="bottun-delete-post" onClick={handleDelete}>
-            <FontAwesomeIcon icon={faTrash} />
-          </button>
+        <div className="post-footer">
+          <p className="post-publish-time">
+            Published at {data.created_at}, by {data.username}
+          </p>
+          <div className="post-btn-container">
+            <button className="bottun-editing" onClick={handleEdit}>
+              <FontAwesomeIcon icon={faPenToSquare} />
+            </button>
+            <button className="bottun-delete-post" onClick={handleDelete}>
+              <FontAwesomeIcon icon={faTrash} />
+            </button>
+          </div>
         </div>
       </div>
       <div className="picture-part">

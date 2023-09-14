@@ -17,51 +17,51 @@ function App() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    (async () => {
-      const postsFromServer = await axios.get("http://127.0.0.1:5000/posts");
+    const initApp = async () => {
+      const postsFromServer = await axios.get("posts");
       setPosts(postsFromServer.data);
 
-      const categoriesFromServer = await axios.get(
-        "http://127.0.0.1:5000/category"
-      );
+      const categoriesFromServer = await axios.get("category");
       setCategories(categoriesFromServer.data);
-    })();
+    };
+
+    const id = setTimeout(initApp, 500);
+    axios.defaults.baseURL = "http://127.0.0.1:5000";
+    return () => clearTimeout(id);
   }, []);
 
   return (
     <div className="App">
-      <div>
-        <Nav {...{ setIsLoggedIn }} {...{ isLoggedIn }} />
-        <div className="all">
-          <Routes>
-            <Route path="/home" element={<Home {...{ categories, posts }} />} />
-            <Route path="/about" element={<About />} />
-            <Route
-              path="/newPost"
-              element={
-                isLoggedIn ? (
-                  <NewPost {...{ categories }} />
-                ) : (
-                  <Navigate to="/home" />
-                )
-              }
-            />
-            <Route
-              path="/EditingMyPost/:post_id"
-              element={
-                isLoggedIn ? (
-                  <EditingMyPost {...{ categories, posts }} />
-                ) : (
-                  <Navigate to="/home" />
-                )
-              }
-            />
-            <Route path="/PostPage/:id" element={<PostPage {...{ posts }} />} />
-            <Route path="/LogIn" element={<LogIn {...{ setIsLoggedIn }} />} />
-            <Route path="/SignUp" element={<SignUp />} />
-            <Route path="/*" element={<Navigate to="/home" />} />
-          </Routes>
-        </div>
+      <Nav {...{ setIsLoggedIn }} {...{ isLoggedIn }} />
+      <div className="all">
+        <Routes>
+          <Route path="/home" element={<Home {...{ categories, posts }} />} />
+          <Route path="/about" element={<About />} />
+          <Route
+            path="/newPost"
+            element={
+              isLoggedIn ? (
+                <NewPost {...{ categories }} />
+              ) : (
+                <Navigate to="/home" />
+              )
+            }
+          />
+          <Route
+            path="/EditingMyPost/:post_id"
+            element={
+              isLoggedIn ? (
+                <EditingMyPost {...{ categories, posts }} />
+              ) : (
+                <Navigate to="/home" />
+              )
+            }
+          />
+          <Route path="/PostPage/:id" element={<PostPage {...{ posts }} />} />
+          <Route path="/LogIn" element={<LogIn {...{ setIsLoggedIn }} />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/*" element={<Navigate to="/home" />} />
+        </Routes>
       </div>
     </div>
   );

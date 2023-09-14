@@ -3,7 +3,7 @@ import "./Side.css";
 function Side() {
   return (
     <div className="side-text">
-      <h1 className="header-side-text">Latest</h1>
+      <h2 className="header-side-text">Latest</h2>
       <p className="uper-side-text">
         Blog post #1 <a href="/post/1">go to page</a>
         <br />
@@ -13,7 +13,7 @@ function Side() {
         <br />
         Blog post #3 <a href="/post/3">go to page</a>
       </p>
-      <h1 className="header-side-text">Popular</h1>
+      <h2 className="header-side-text">Popular</h2>
       <p className="botom-side-text">
         Blog post #3 <a href="/post/3">go to page</a>
         <br />

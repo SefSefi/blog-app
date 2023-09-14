@@ -8,7 +8,7 @@ function Nav({ setIsLoggedIn, isLoggedIn }) {
   const nav = useNavigate();
   const handleLogout = () => {
     axios
-      .post("http://127.0.0.1:5000/logout", null, {
+      .post("logout", null, {
         withCredentials: true,
       })
       .then((res) => {
@@ -34,11 +34,11 @@ function Nav({ setIsLoggedIn, isLoggedIn }) {
             <NavLink to="/newPost">New Post Page</NavLink>
           </div>
         )}
-        {isLoggedIn && (
+        {/* {isLoggedIn && (
           <div className="nav-padding nav-left-border">
             <NavLink to="/EditingMyPost">Editing My Post</NavLink>
           </div>
-        )}
+        )} */}
       </div>
       <div className="login-button">
         {isLoggedIn ? (

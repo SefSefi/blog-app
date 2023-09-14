@@ -9,7 +9,7 @@ export default function Comments({ post }) {
   const handlePostComment = () => {
     axios
       .post(
-        "http://127.0.0.1:5000/commentPost",
+        "commentPost",
         { content: comment, post_id: post.id },
         { withCredentials: true }
       )

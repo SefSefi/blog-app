@@ -14,7 +14,7 @@ export default function SignUp() {
 
   const handleSignup = () => {
     axios
-      .post("http://127.0.0.1:5000/signup", { username, password })
+      .post("signup", { username, password })
       .then(() => {
         nav("/login");
       })

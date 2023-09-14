@@ -1,11 +1,17 @@
+.baseFor-newPost {
+  display: flex;
+  flex-direction: row;
+}
+
 .new-post-form {
+  /* background-color: lemonchiffon; */
   display: flex;
   align-content: center;
-  row-gap: 30px;
+  row-gap: 10px;
   flex-direction: column;
   border-radius: 5px;
   align-items: center;
-  width: 100%;
+  width: 50%;
   margin: 0px;
   padding-top: 100px;
 }
@@ -14,5 +20,9 @@
 .new-post-form input,
 .new-post-form textarea,
 .new-post-form button {
-  width: 300px;
+  width: 50%;
+}
+
+.footer-picture {
+  width: 50%;
 }

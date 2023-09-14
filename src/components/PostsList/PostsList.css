@@ -1,22 +1,34 @@
-.all-posts{
-    display: flex;
-    width: 70%;
-    flex-direction: column;
-    padding: 1px 5px;
-    min-height: 140px;
+.all-posts {
+  display: flex;
+  height: 490px;
+  flex-direction: column;
+  padding: 1px 5px;
 }
 
-
-
-
-.toBold{
-    font-weight: bold;
+.toBold {
+  font-weight: bold;
 }
-.toRed{
-    color: #DC143C;
+.toRed {
+  color: #dc143c;
 }
 
-h3{
-    margin: 0 0 5px 0;
+.main_tytle {
+  font-family: "Lucida Handwriting";
+  text-align: center;
 }
 
+h3 {
+  margin: 0 0 5px 0;
+}
+
+.onlyPosts {
+  display: flex;
+  height: 350px;
+  flex-direction: column;
+  padding: 1px 5px;
+  overflow: auto;
+}
+
+label:first-child {
+  margin-right: 40px;
+}
